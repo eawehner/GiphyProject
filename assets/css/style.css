@@ -1,0 +1,92 @@
+/* background gradients from: https://uigradients.com/ */
+
+body {
+    background: #77A1D3;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #E684AE, #79CBCA, #77A1D3);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #E684AE, #79CBCA, #77A1D3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #ffffff;
+}
+
+h1 {
+    color: #fafafa;
+    font-family: Arial;
+    text-align: center;
+    text-shadow: 3px 2px 10px #9daef5;
+}
+
+#button-display {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+#gif-display {
+    width: 75%;
+    float: left;
+    text-align: center;
+}
+
+.anime-img {
+    margin: 10px;
+}
+
+span {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px;
+    padding: 10px;
+}
+
+#form {
+    width: 25%;
+    float: right;
+}
+
+#anime-input {
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid #EC6EAD;
+    border-radius: 5px;
+}
+
+.anime-button, #anime-add {
+    background: #3494E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #EC6EAD, #3494E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    border-radius: 25px;
+    text-shadow: 3px 2px 1px #9daef5;
+    -webkit-box-shadow: 6px 5px 20px #9daef5;
+    -moz-box-shadow: 6px 5px 20px #9daef5;
+    box-shadow: 6px 5px 20px #9daef5;
+    font-family: Arial;
+    color: #fafafa;
+    font-size: 16px;
+    padding: 10px;
+    text-decoration: none;
+
+    margin: 5px;
+}
+
+.anime-button:hover, #anime-add:hover {
+    background: #3494E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #EC6EAD, #3494E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #EC6EAD, #3494E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    -webkit-border-radius: 25;
+    -moz-border-radius: 25;
+    border-radius: 25px;
+    text-shadow: 3px 2px 1px #9daef5;
+    -webkit-box-shadow: 6px 5px 20px #9daef5;
+    -moz-box-shadow: 6px 5px 20px #9daef5;
+    box-shadow: 6px 5px 20px #9daef5;
+    font-family: Arial;
+    color: #fafafa;
+    font-size: 16px;
+    padding: 10px;
+    text-decoration: none;
+
+    margin: 5px;
+}
+
+/* button tutorial https://medium.freecodecamp.org/a-quick-guide-to-styling-buttons-using-css-f64d4f96337f */

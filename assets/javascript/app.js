@@ -38,6 +38,7 @@ $("#anime-add").on("click", function() {
     event.preventDefault();
     var userInput = $("#anime-input").val().trim();
     anime.push(userInput);
+    anime.sort();
     buttonMaker();
 });
 
@@ -76,9 +77,9 @@ $(document.body).on("click", ".anime-button", function() {
             ratingSpan.text(animeRating);
 
             $("#gif-display").prepend("<br>");
-            $("#gif-display").prepend(animeGIF);
-            $("#gif-display").prepend("<br>");
             $("#gif-display").prepend(ratingSpan);
+            $("#gif-display").prepend("<br>");
+            $("#gif-display").prepend(animeGIF);
         });
     });
 });
