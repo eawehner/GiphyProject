@@ -3,7 +3,7 @@ var anime = [
     "aggretsuko",
     "cardcaptor sakura",
     "cowboy bebop",
-    "digimon",
+    "dragonball",
     "fullmetal alchemist",
     "naruto",
     "pokemon",
@@ -32,7 +32,6 @@ function buttonMaker() {
 }
 
 // USER ADDS THEIR OWN SEARCH ITEMS TO ARRAY
-
 // PUSH ITEM FROM INPUT BOX INTO ARRAY
 
 $("#anime-add").on("click", function() {
@@ -43,18 +42,45 @@ $("#anime-add").on("click", function() {
 });
 
 
-// USE THE SEARCH URL WITH THE SELECTED ITEM FROM ARRAY
-
 // ENSURE ONLY TEN RESULTS ARE PUSHED
 
 // DISPLAY IMAGES, USING BOTH ANIMATED AND STILL IMAGES
 
 $(document.body).on("click", ".anime-button", function() {
+    // USE THE SEARCH URL WITH THE SELECTED ITEM FROM BUTTON
     var animeValue = $(this).attr("data-name");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animeValue + "&api_key=" + API + "&limit=10";
 
-    console.log(animeValue);
-    console.log(queryURL);
+    // ENSURE ONLY TEN RESULTS ARE PUSHED
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animeValue + "&api_key=" + API + "&limit=10";
+
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+    }).then(function(response) {
+        // console.log(response);
+
+        $.each(response.data, function(i) {
+            var animatedIMG = response.data[i].images.original.url;
+            var stillIMG = response.data[i].images.original_still.url;
+
+            var animeGIF = $("<img>");
+            animeGIF.attr("src", stillIMG);
+            animeGIF.attr("data-state", "still");
+            animeGIF.attr("data-still", stillIMG);
+            animeGIF.attr("data-animate", animatedIMG);
+            animeGIF.addClass("anime-img");
+
+            var animeRating = response.data[i].rating;
+
+            var ratingSpan = $("<span>")
+            ratingSpan.text(animeRating);
+
+            $("#gif-display").prepend("<br>");
+            $("#gif-display").prepend(animeGIF);
+            $("#gif-display").prepend("<br>");
+            $("#gif-display").prepend(ratingSpan);
+        });
+    });
 });
 
 
@@ -66,6 +92,20 @@ $(document.body).on("click", ".anime-button", function() {
 // IF IMG SRC IS STILL, SWITCH TO ANIMATED
 
 // IF IMG SRC IS ANIMATED, SWITCH TO STILL
+
+$(document.body).on("click", ".anime-img", function() {
+    var state = $(this).attr("data-state");
+
+    if (state === "still") {
+        var animated = $(this).attr("data-animate");
+        $(this).attr("src", animated);
+        $(this).attr("data-state", "animate");
+    } else {
+        var stilled = $(this).attr("data-still");
+        $(this).attr("src", stilled);
+        $(this).attr("data-state", "still");
+    }
+});
 
 buttonMaker();
 
