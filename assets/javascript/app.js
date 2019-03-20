@@ -2,6 +2,7 @@
 var anime = [
     "aggretsuko",
     "cardcaptor sakura",
+    "chii's sweet home",
     "cowboy bebop",
     "dragonball",
     "fullmetal alchemist",
@@ -37,6 +38,7 @@ function buttonMaker() {
 $("#anime-add").on("click", function() {
     event.preventDefault();
     var userInput = $("#anime-input").val().trim();
+    $("#anime-input").val("");
     anime.push(userInput);
     anime.sort();
     buttonMaker();
@@ -61,8 +63,12 @@ $(document.body).on("click", ".anime-button", function() {
         // console.log(response);
 
         $.each(response.data, function(i) {
+            console.log(response.data[i]);
             var animatedIMG = response.data[i].images.original.url;
             var stillIMG = response.data[i].images.original_still.url;
+
+            var heightGIF = response.data[i].images.original.height;
+            var widthGIF = response.data[i].images.original.width;
 
             var animeGIF = $("<img>");
             animeGIF.attr("src", stillIMG);
@@ -76,10 +82,18 @@ $(document.body).on("click", ".anime-button", function() {
             var ratingSpan = $("<span>")
             ratingSpan.text(animeRating);
 
-            $("#gif-display").prepend("<br>");
-            $("#gif-display").prepend(ratingSpan);
-            $("#gif-display").prepend("<br>");
-            $("#gif-display").prepend(animeGIF);
+            var colGIF = $("<div>");
+            colGIF.addClass("anime-col");
+            colGIF.attr("height", heightGIF);
+            colGIF.attr("width", widthGIF);
+            colGIF.html(animeGIF);
+
+            // $("#gif-display").prepend("<br>");
+            // $("#gif-display").prepend(ratingSpan);
+            // $("#gif-display").prepend("<br>");
+            // $("#gif-display").prepend(animeGIF);
+
+            $("#gif-display").prepend(colGIF);
         });
     });
 });
